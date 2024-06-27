@@ -2,8 +2,10 @@ from django.db import models
 
 class AdminsUser(models.Model):
     TYPE_CHOICES = [
-        ('admin', 'Admin'),
-        ('secretar', 'Secretar'),
+        ('headadmin', 'HeadAdmin'),
+        ('sales', 'Sales'),
+        ('doctor', 'Doctor'),
+        ('admin','Admin')
     ]
 
     phone = models.CharField(max_length=13)
@@ -13,3 +15,4 @@ class AdminsUser(models.Model):
 
     def __str__(self):
         return self.name
+        
