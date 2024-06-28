@@ -54,5 +54,12 @@ class ClientCreateView(generics.CreateAPIView):
 
 
 class ClientListView(generics.ListAPIView):
+    @swagger_auto_schema(
+        request_body=ClientSerializer,
+        operation_summary="Get",
+        operation_description="get"
+    )
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
