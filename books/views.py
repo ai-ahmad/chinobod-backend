@@ -34,12 +34,5 @@ class BooksCreateView(generics.CreateAPIView):
 
 
 class BookListView(generics.ListAPIView):
-    @swagger_auto_schema(
-        request_body=ClientSerializer,
-        operation_summary="Get",
-        operation_description="get"
-    )
-    def get(self, request, *args, **kwargs):
-        return self.retrieve(request, *args, **kwargs)
     queryset = Books.objects.all()
     serializer_class = BooksSerializer

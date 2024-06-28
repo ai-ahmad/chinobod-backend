@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import AdminsUser
+from .models import BoosUser
 # Register your models here.
 
 
-@admin.register(AdminsUser)
-class AdminUsers(admin.ModelAdmin):
+@admin.register(BoosUser)
+class BoosUser(admin.ModelAdmin):
     list_display = ('phone', 'type', 'name','password')
     

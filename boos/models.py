@@ -1,6 +1,6 @@
 from django.db import models
 
-class AdminsUser(models.Model):
+class BoosUser(models.Model):
     TYPE_CHOICES = [
         ('headadmin', 'HeadAdmin'),
         ('sales', 'Sales'),

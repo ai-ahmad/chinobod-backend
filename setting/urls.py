@@ -3,10 +3,11 @@ from django.urls import path
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-from client.views import ClientDetailView,ClientCreateView
-from admins.views import AdminCreateView, AdminDetailView
+from client.views import ClientDetailView,ClientCreateView,ClientListView
+from boos.views import AdminCreateView, AdminDetailView,AdminListView
 from books.views import BooksCreateView, BooksDetailView,BookListView
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -28,9 +29,13 @@ urlpatterns = [
    path('admin/',admin.site.urls),
    path('client/', ClientCreateView.as_view(), name='client-create'),
    path('client/<int:pk>/', ClientDetailView.as_view(), name='client-detail'),
-   path('admin/', AdminCreateView.as_view(), name='admin'),
-   path('admin/<int:pk>/', AdminDetailView.as_view(), name='admin'),
+   path('boss/', AdminCreateView.as_view(), name='Boss'),
+   path('boos/<int:pk>/', AdminDetailView.as_view(), name='Boss'),
    path('books/',BooksCreateView.as_view(), name='Books'),
    path('books/<int:pk>/', BooksDetailView.as_view(), name='Books'),
-   path('books/all/', BookListView.as_view(), name="Books")
+   path('books/all/', BookListView.as_view(), name="Books"),
+   path('boos/all/', AdminListView.as_view(), name="Boss"),
+   path('client/all/',ClientListView.as_view(), name="client-get"),
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
