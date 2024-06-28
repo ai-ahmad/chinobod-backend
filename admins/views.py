@@ -23,3 +23,9 @@ class AdminDetailView(generics.RetrieveUpdateDestroyAPIView):
 class AdminCreateView(generics.CreateAPIView):
     queryset = AdminsUser.objects.all()
     serializer_class = AdminSerializer
+
+
+class AdminListView(generics.ListAPIView):
+    queryset = AdminsUser.objects.all()
+    serializer_class = AdminSerializer
+
